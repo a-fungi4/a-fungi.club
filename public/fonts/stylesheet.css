@@ -1,0 +1,84 @@
+@font-face {
+    font-family: 'Moby';
+    src: url('Moby-Regular.eot');
+    src: url('Moby-Regular.eot?#iefix') format('embedded-opentype'),
+        url('Moby-Regular.woff2') format('woff2'),
+        url('Moby-Regular.woff') format('woff'),
+        url('Moby-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Moby Monospace';
+    src: url('Moby-Monospace.eot');
+    src: url('Moby-Monospace.eot?#iefix') format('embedded-opentype'),
+        url('Moby-Monospace.woff2') format('woff2'),
+        url('Moby-Monospace.woff') format('woff'),
+        url('Moby-Monospace.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Moby';
+    src: url('Moby-Bold.eot');
+    src: url('Moby-Bold.eot?#iefix') format('embedded-opentype'),
+        url('Moby-Bold.woff2') format('woff2'),
+        url('Moby-Bold.woff') format('woff'),
+        url('Moby-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Hack';
+    src: url('Hack-BoldItalic.eot');
+    src: url('Hack-BoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('Hack-BoldItalic.woff2') format('woff2'),
+        url('Hack-BoldItalic.woff') format('woff'),
+        url('Hack-BoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Hack';
+    src: url('Hack-Italic.eot');
+    src: url('Hack-Italic.eot?#iefix') format('embedded-opentype'),
+        url('Hack-Italic.woff2') format('woff2'),
+        url('Hack-Italic.woff') format('woff'),
+        url('Hack-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Hack';
+    src: url('Hack-Bold.eot');
+    src: url('Hack-Bold.eot?#iefix') format('embedded-opentype'),
+        url('Hack-Bold.woff2') format('woff2'),
+        url('Hack-Bold.woff') format('woff'),
+        url('Hack-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Hack';
+    src: url('Hack-Regular.eot');
+    src: url('Hack-Regular.eot?#iefix') format('embedded-opentype'),
+        url('Hack-Regular.woff2') format('woff2'),
+        url('Hack-Regular.woff') format('woff'),
+        url('Hack-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+

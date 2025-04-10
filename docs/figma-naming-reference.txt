@@ -1,0 +1,197 @@
+FIGMA COMPONENT NAMING CONVENTION REFERENCE GUIDE
+==============================================
+
+1. ROOT LAYOUT STRUCTURE
+----------------------
+Layout
+├── Header
+├── Main
+└── Footer
+
+2. HEADER COMPONENTS
+------------------
+Header/
+├── HeaderContainer
+│   ├── Branding
+│   │   ├── HeaderLogo
+│   │   └── HeaderTitle
+│   ├── Navigation
+│   └── HeaderActions
+│       ├── SearchBar
+│       ├── UserProfile
+│       └── ActionButtons
+
+3. NAVIGATION COMPONENTS
+----------------------
+Navigation/
+├── NavigationBar
+│   └── NavigationContainer
+│       ├── DesktopNavigation
+│       └── MobileNavigation
+├── NavigationItems
+├── NavigationLink
+├── NavigationButton
+└── NavigationIcon
+
+4. MAIN CONTENT COMPONENTS
+------------------------
+Main/
+├── PageContainer
+│   ├── PageHeader
+│   │   ├── PageTitle
+│   │   ├── PageDescription
+│   │   └── PageActions
+│   └── PageContent
+│       ├── Sections
+│       └── Sidebar
+
+5. SECTION COMPONENTS
+-------------------
+Section/
+├── SectionContainer
+├── SectionHeader
+└── SectionContent
+
+6. FOOTER COMPONENTS
+------------------
+Footer/
+├── FooterContainer
+├── FooterNavigation
+│   ├── PrimaryLinks
+│   └── SecondaryLinks
+├── FooterSections
+│   ├── ContactInfo
+│   ├── SocialLinks
+│   └── LegalLinks
+└── FooterBottom
+
+7. UI COMPONENTS
+--------------
+UI/
+├── Buttons
+│   ├── ButtonPrimary
+│   ├── ButtonSecondary
+│   ├── ButtonOutline
+│   └── ButtonIcon
+├── Forms
+│   ├── FormInput
+│   ├── FormTextarea
+│   ├── FormSelect
+│   ├── FormCheckbox
+│   └── FormRadio
+├── Cards
+│   ├── CardHeader
+│   ├── CardBody
+│   ├── CardFooter
+│   └── CardImage
+└── Lists
+    ├── ListItem
+    └── ListAction
+
+8. INTERACTIVE COMPONENTS
+-----------------------
+Interactive/
+├── Modal
+│   ├── ModalHeader
+│   ├── ModalBody
+│   └── ModalFooter
+├── Tooltip
+├── Popover
+└── Alert
+
+9. MEDIA COMPONENTS
+-----------------
+Media/
+├── Image
+├── Video
+├── Icon
+└── Gallery
+
+10. TYPOGRAPHY COMPONENTS
+-----------------------
+Typography/
+├── Heading
+│   ├── HeadingLarge
+│   ├── HeadingMedium
+│   └── HeadingSmall
+├── Paragraph
+│   ├── ParagraphLead
+│   ├── ParagraphBody
+│   └── ParagraphSmall
+└── Text
+    ├── TextBody
+    ├── TextCaption
+    └── TextLabel
+
+11. UTILITY COMPONENTS
+--------------------
+Utility/
+├── Loading
+│   ├── LoadingSpinner
+│   ├── LoadingDots
+│   └── LoadingBar
+├── Error
+├── Success
+└── Status
+
+12. VARIANT SUFFIXES
+------------------
+- Size Variants:
+  └── [Component]Small
+  └── [Component]Medium
+  └── [Component]Large
+  └── [Component]Full
+
+- State Variants:
+  └── [Component]Active
+  └── [Component]Inactive
+  └── [Component]Disabled
+  └── [Component]Loading
+  └── [Component]Error
+  └── [Component]Success
+
+13. RESPONSIVE VARIANTS
+---------------------
+- Device Specific:
+  └── [Component]Mobile
+  └── [Component]Tablet
+  └── [Component]Desktop
+  └── [Component]Wide
+
+14. NAMING CONVENTIONS
+--------------------
+1. Use PascalCase for component names
+2. Use descriptive, specific names
+3. Group related components
+4. Use consistent prefixes
+5. Include component purpose in name
+6. Use appropriate suffixes for variants
+
+15. COMPONENT ORGANIZATION
+-----------------------
+- Group by feature/function
+- Maintain consistent hierarchy
+- Use clear parent-child relationships
+- Keep related components together
+- Follow logical naming patterns
+
+16. BEST PRACTICES
+----------------
+1. Be consistent with naming
+2. Use clear hierarchical structure
+3. Group related components
+4. Include state variations
+5. Consider responsive variants
+6. Document component purposes
+7. Use standard prefixes/suffixes
+8. Maintain organized structure
+9. Follow team conventions
+10. Keep names descriptive but concise
+
+Remember:
+- Keep names clear and meaningful
+- Use consistent formatting
+- Follow established patterns
+- Document any custom naming
+- Update naming documentation
+- Share conventions with team 
