@@ -7,7 +7,7 @@ import { SocialMediaLinks } from '@/components/ui/SocialMediaLinks';
 
 export const HeroSection = () => {
   return (
-    <section className="relative min-h-screen w-full bg-background overflow-hidden flex items-start justify-center pt-8">
+    <section className="relative w-full bg-background overflow-hidden flex items-start justify-center pt-8 pb-16">
       {/* Background gradient effects */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-[30rem] bg-primary/20 blur-[10rem] rounded-full" />
       
