@@ -33,18 +33,27 @@ export const WipSection = () => {
         <h2 className="text-white text-xl md:text-2xl font-header mb-6">WIP</h2>
         
         {/* Carousel Container */}
-        <div className="relative flex items-center">
+        <div className="relative flex items-center justify-center">
           <div className="flex gap-4 md:gap-6 mx-auto">
             {projects.map((project, index) => {
               const isExpanded = expandedIndex === index;
+              const isBeforeExpanded = expandedIndex !== null && index < expandedIndex;
+              const isAfterExpanded = expandedIndex !== null && index > expandedIndex;
               
               return (
                 <div 
                   key={index} 
                   className={cn(
                     "transition-all duration-500 ease-in-out",
-                    isExpanded && "fixed left-1/2 top-24 -translate-x-1/2 z-50",
-                    expandedIndex !== null && !isExpanded && "opacity-0"
+                    isExpanded 
+                      ? "fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50" 
+                      : expandedIndex !== null 
+                        ? cn(
+                            "opacity-50 pointer-events-none",
+                            isBeforeExpanded && "-translate-x-1/2",
+                            isAfterExpanded && "translate-x-1/2"
+                          )
+                        : "opacity-100"
                   )}
                   style={{
                     width: isExpanded ? '90vw' : '227px',

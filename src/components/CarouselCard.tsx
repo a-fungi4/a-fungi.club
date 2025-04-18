@@ -46,44 +46,55 @@ const CarouselCard = ({
     <div 
       className={cn(
         "relative rounded-lg cursor-pointer overflow-hidden",
-        "transition-all duration-500 ease-in-out",
+        "transition-[width] duration-300 ease-in-out",
         isExpanded 
-          ? "bg-[#6B53A3] min-h-[600px]" 
-          : "bg-[#15102A] shadow-[0_0_2px_0_#C0282D] hover:shadow-[0_0_20px_0_rgba(255,70,85,0.3)]"
+          ? "bg-[#6B53A3] w-[90vw] max-w-[1046px]" 
+          : "bg-[#15102A] shadow-[0_0_2px_0_#C0282D] hover:shadow-[0_0_20px_0_rgba(255,70,85,0.3)] w-[227px] aspect-[227/300]"
       )}
       onClick={onClick}
     >
       <div className={cn(
-        "p-4 flex flex-col gap-3",
-        "transition-all duration-500 ease-in-out",
-        isExpanded && "items-start"
+        "flex flex-col",
+        "transition-[height] duration-300 delay-300 ease-in-out",
+        isExpanded ? "min-h-[600px] p-4 gap-3" : "h-full px-1 pt-1"
       )}>
         {/* Project Thumbnail Section */}
-        <div className="w-full h-[115px] flex items-start gap-3">
-          <div className="relative w-[121px] h-[95px] rounded-2xl overflow-hidden">
-            <Image
-              src={images[0]}
-              alt={title}
-              fill
-              className="object-cover"
-              priority
-            />
-          </div>
+        <div className={cn(
+          "relative w-full rounded-lg overflow-hidden",
+          isExpanded ? "h-[115px]" : "aspect-[202/158]"
+        )}>
+          <Image
+            src={images[0]}
+            alt={title}
+            fill
+            className="object-cover"
+            priority
+          />
         </div>
 
         {/* Main Content Section */}
-        <div className="w-full flex flex-col gap-3">
+        <div className={cn(
+          "w-full flex flex-col",
+          isExpanded ? "gap-3" : "gap-2 px-3",
+          !isExpanded && "mt-[10px]"
+        )}>
           {/* Title */}
           <h3 className="text-white text-[10pt] font-hack">{title}</h3>
           
           {/* Project Type */}
-          <div className="bg-white rounded-full px-3 py-1 border-2 border-[#C0282D] w-fit">
-            <span className="text-black text-[6pt] font-hack">{projectType}</span>
+          <div className="w-fit inline-flex bg-white rounded-full border-2 border-[#C0282D]">
+            <span className="text-black text-[6pt] font-hack px-[4px] py-[4px] leading-none whitespace-nowrap">
+              {projectType}
+            </span>
           </div>
 
           {/* Photo Carousel */}
           {isExpanded && (
-            <div className="w-full h-[198px] flex gap-3 overflow-x-auto">
+            <div className={cn(
+              "w-full h-[198px] flex gap-3 overflow-x-auto opacity-0",
+              "transition-opacity duration-300 delay-[400ms]",
+              isExpanded && "opacity-100"
+            )}>
               {images.map((image, index) => (
                 <div 
                   key={index}
@@ -103,7 +114,11 @@ const CarouselCard = ({
 
           {/* Description */}
           {isExpanded && (
-            <div className="w-full h-[116px] p-4 bg-white border-2 border-[#4361EE] rounded-lg">
+            <div className={cn(
+              "w-full h-[116px] p-4 bg-white border-2 border-[#4361EE] rounded-lg opacity-0",
+              "transition-opacity duration-300 delay-[500ms]",
+              isExpanded && "opacity-100"
+            )}>
               <p className="text-black text-sm font-hack leading-relaxed">
                 {description}
               </p>
@@ -112,7 +127,11 @@ const CarouselCard = ({
 
           {/* Action Buttons */}
           {isExpanded && (
-            <div className="w-full flex justify-center gap-[60px] mt-4">
+            <div className={cn(
+              "w-full flex justify-center gap-[60px] mt-4 opacity-0",
+              "transition-opacity duration-300 delay-[600ms]",
+              isExpanded && "opacity-100"
+            )}>
               <button
                 onClick={(e) => {
                   e.stopPropagation();
