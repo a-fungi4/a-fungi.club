@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { CarouselCard } from '@/components/CarouselCard';
+import CarouselCard from '@/components/CarouselCard';
 import { cn } from '@/lib/utils';
 
 export const WipSection = () => {
@@ -12,24 +12,29 @@ export const WipSection = () => {
       title: "PROJECT 1",
       projectType: "Project Type",
       skills: ["Next.js", "Node.js", "MongoDB"],
-      image: "/assets/images/project1.jpg",
+      description: "A description of Project 1 and its features. This is a work in progress project showcasing various technologies and implementations.",
+      image: "/assets/images/project1.png",
+      projectUrl: "/portfolio/project1"
     },
     {
       title: "PROJECT 2",
       projectType: "Project Type",
       skills: ["Next.js", "Node.js", "MongoDB"],
-      image: "/assets/images/project2.jpg",
+      description: "A description of Project 2 and its features. This is a work in progress project showcasing various technologies and implementations.",
+      image: "/assets/images/project2.png",
+      projectUrl: "/portfolio/project2"
     },
   ];
 
   return (
-    <section id="wip" className="relative min-h-screen bg-[#15102A] pt-32 overflow-hidden">
-      <div className="container mx-auto px-16">
-        <h2 className="text-white text-[24pt] font-hack mb-24">WORK IN PROGRESS</h2>
+    <section className="relative py-8 overflow-hidden z-10">
+      <div className="absolute inset-0 bg-[#15102A]/30 backdrop-blur-xl" />
+      <div className="container relative mx-auto px-4 md:px-8">
+        <h2 className="text-white text-xl md:text-2xl font-header mb-6">WIP</h2>
         
         {/* Carousel Container */}
-        <div className="relative flex items-start min-h-[600px]">
-          <div className="absolute left-1/2 -translate-x-1/2 flex gap-6">
+        <div className="relative flex items-center">
+          <div className="flex gap-4 md:gap-6 mx-auto">
             {projects.map((project, index) => {
               const isExpanded = expandedIndex === index;
               
@@ -38,15 +43,17 @@ export const WipSection = () => {
                   key={index} 
                   className={cn(
                     "transition-all duration-500 ease-in-out",
-                    isExpanded && "fixed left-1/2 top-32 -translate-x-1/2 z-20",
+                    isExpanded && "fixed left-1/2 top-24 -translate-x-1/2 z-50",
                     expandedIndex !== null && !isExpanded && "opacity-0"
                   )}
                   style={{
-                    width: isExpanded ? '1046px' : '227px',
+                    width: isExpanded ? '90vw' : '227px',
+                    maxWidth: isExpanded ? '1046px' : 'none',
                   }}
                 >
                   <CarouselCard 
                     {...project} 
+                    images={[project.image]}
                     isExpanded={isExpanded}
                     onClick={() => setExpandedIndex(isExpanded ? null : index)}
                   />

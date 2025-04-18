@@ -7,27 +7,15 @@ import { useRef, useEffect, useState } from 'react';
 import { MobileNav } from './MobileNav';
 
 const NAV_ITEMS = [
-  { name: 'WIP', href: '#wip', icon: '/assets/icons/Nav bar Icons/24x24-wip.svg' },
-  { name: 'PORTFOLIO', href: '#portfolio', icon: '/assets/icons/Nav bar Icons/24x24-portfolio.svg' },
-  { name: 'ABOUT', href: '#about', icon: '/assets/icons/Nav bar Icons/24x24-about.svg' },
-  { name: 'ART', href: '#art', icon: '/assets/icons/Nav bar Icons/24x24-art.svg' },
-  { name: 'MISC', href: '#misc', icon: '/assets/icons/Nav bar Icons/24x24-misc.svg' },
+  { name: 'PORTFOLIO', href: '/portfolio', icon: '/assets/icons/Nav%20bar%20Icons/24x24-portfolio.svg' },
+  { name: 'ABOUT', href: '/about', icon: '/assets/icons/Nav%20bar%20Icons/24x24-about.svg' },
+  { name: 'ART', href: '/art', icon: '/assets/icons/Nav%20bar%20Icons/24x24-art.svg' },
+  { name: 'MISC', href: '/misc', icon: '/assets/icons/Nav%20bar%20Icons/24x24-misc.svg' },
 ];
 
 export const Navbar = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [scrollPercentage, setScrollPercentage] = useState(0);
-
-  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
-  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -68,7 +56,7 @@ export const Navbar = () => {
             <div className="flex items-center">
               <Link href="/" className="mr-2 shrink-0 relative z-10">
                 <Image
-                  src="/assets/icons/Nav bar Icons/24x24-brand mark.svg"
+                  src="/assets/icons/Nav%20bar%20Icons/24x24-brand%20mark.svg"
                   alt="Brand Mark"
                   width={24}
                   height={24}
@@ -87,10 +75,9 @@ export const Navbar = () => {
                     [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
                 >
                   {NAV_ITEMS.map((item) => (
-                    <a
+                    <Link
                       key={item.name}
                       href={item.href}
-                      onClick={(e) => scrollToSection(e, item.href)}
                       className="flex items-center gap-2 text-white hover:text-[#FF4655] transition-colors shrink-0"
                     >
                       <Image
@@ -103,7 +90,7 @@ export const Navbar = () => {
                       <span className="text-lg font-medium">
                         {item.name}
                       </span>
-                    </a>
+                    </Link>
                   ))}
                 </div>
               </div>

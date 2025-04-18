@@ -6,26 +6,17 @@ import Image from 'next/image';
 import { cn } from '@/lib/utils';
 
 const NAV_ITEMS = [
-  { name: 'WIP', href: '#wip', icon: '/assets/icons/Nav bar Icons/24x24-wip.svg' },
-  { name: 'PORTFOLIO', href: '#portfolio', icon: '/assets/icons/Nav bar Icons/24x24-portfolio.svg' },
-  { name: 'ABOUT', href: '#about', icon: '/assets/icons/Nav bar Icons/24x24-about.svg' },
-  { name: 'ART', href: '#art', icon: '/assets/icons/Nav bar Icons/24x24-art.svg' },
-  { name: 'MISC', href: '#misc', icon: '/assets/icons/Nav bar Icons/24x24-misc.svg' },
+  { name: 'PORTFOLIO', href: '/portfolio', icon: '/assets/icons/Nav%20bar%20Icons/24x24-portfolio.svg' },
+  { name: 'ABOUT', href: '/about', icon: '/assets/icons/Nav%20bar%20Icons/24x24-about.svg' },
+  { name: 'ART', href: '/art', icon: '/assets/icons/Nav%20bar%20Icons/24x24-art.svg' },
+  { name: 'MISC', href: '/misc', icon: '/assets/icons/Nav%20bar%20Icons/24x24-misc.svg' },
 ];
 
 export const MobileNav = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
-      });
-      setIsOpen(false); // Close the mobile menu after clicking
-    }
+  const handleNavClick = () => {
+    setIsOpen(false); // Close the mobile menu after clicking
   };
 
   return (
@@ -47,11 +38,11 @@ export const MobileNav = () => {
         )}>
           <Link href="/" className="block">
             <Image
-              src="/assets/icons/Nav bar Icons/24x24-brand mark.svg"
+              src="/assets/icons/Nav%20bar%20Icons/24x24-brand%20mark.svg"
               alt="Brand Mark"
               width={22}
               height={19.5}
-              className="w-[22px] h-[19.5px]"
+              className="w-[22px] h-auto"
             />
           </Link>
         </div>
@@ -67,10 +58,10 @@ export const MobileNav = () => {
         )}>
           <div className="flex flex-col w-full gap-3">
             {NAV_ITEMS.map((item, index) => (
-              <a
+              <Link
                 key={item.name}
                 href={item.href}
-                onClick={(e) => scrollToSection(e, item.href)}
+                onClick={handleNavClick}
                 className={cn(
                   "flex items-center gap-2 text-white hover:text-[#FF4655] w-full",
                 )}
@@ -86,12 +77,12 @@ export const MobileNav = () => {
                   alt={item.name}
                   width={24}
                   height={24}
-                  className="w-6 h-6 shrink-0"
+                  className="w-6 h-auto shrink-0"
                 />
                 <span className="text-[6pt] font-hack uppercase whitespace-nowrap">
                   {item.name}
                 </span>
-              </a>
+              </Link>
             ))}
           </div>
         </div>

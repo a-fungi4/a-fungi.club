@@ -9,7 +9,7 @@ export const BannerSection = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrolled = window.scrollY > 100;
+      const scrolled = window.scrollY > window.innerHeight * 0.1;
       setIsVisible(scrolled);
     };
 
@@ -21,18 +21,22 @@ export const BannerSection = () => {
     <>
       <section 
         className={cn(
-          "fixed top-0 left-0 right-0 w-full h-screen bg-[#15102A] transition-transform duration-500 z-30",
-          isVisible ? "translate-y-0" : "translate-y-full"
+          "fixed top-0 left-0 right-0 w-full h-screen transition-all duration-700 ease-in-out z-30",
+          isVisible ? "translate-y-0 bg-[#15102A]" : "translate-y-full bg-transparent"
         )}
       >
         {/* Background Image and Pattern */}
         <div className="fixed top-0 left-0 right-0 bottom-0">
           <div className="absolute inset-0">
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[80%] h-[30rem] bg-primary/20 blur-[10rem] rounded-full" />
             <Image
               src="/assets/images/wireframe-banner.png"
               alt="Banner Background"
               fill
-              className="object-cover object-center opacity-50"
+              className={cn(
+                "object-cover object-center transition-opacity duration-700",
+                isVisible ? "opacity-50" : "opacity-0"
+              )}
               sizes="100vw"
               priority
               quality={100}
@@ -41,7 +45,10 @@ export const BannerSection = () => {
               src="/assets/images/VectorBG.svg"
               alt="Vector Pattern"
               fill
-              className="object-cover object-center"
+              className={cn(
+                "object-cover object-center transition-opacity duration-700",
+                isVisible ? "opacity-100" : "opacity-0"
+              )}
               sizes="100vw"
               priority
               quality={100}

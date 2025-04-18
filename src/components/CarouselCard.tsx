@@ -1,25 +1,47 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { cn } from '@/lib/utils';
+import { useState } from 'react';
 
 export interface CarouselCardProps {
   title: string;
   projectType: string;
   skills: string[];
-  image: string;
+  description: string;
+  images?: string[];
+  projectUrl?: string;
   isExpanded?: boolean;
   onClick?: () => void;
 }
 
-export const CarouselCard = ({ 
+const CarouselCard = ({ 
   title, 
   projectType, 
   skills, 
-  image,
+  description,
+  images = ['/assets/images/project1.png'],
+  projectUrl = '#',
   isExpanded,
   onClick
 }: CarouselCardProps) => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const nextImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (images.length > 1) {
+      setCurrentImageIndex((prev) => (prev + 1) % images.length);
+    }
+  };
+
+  const prevImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (images.length > 1) {
+      setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
+    }
+  };
+
   return (
     <div 
       className={cn(
@@ -36,88 +58,85 @@ export const CarouselCard = ({
         "transition-all duration-500 ease-in-out",
         isExpanded && "items-start"
       )}>
-        {/* Project Thumbnail */}
-        <div className={cn(
-          "rounded-2xl bg-[#C0282D] overflow-hidden",
-          "transition-all duration-500 ease-in-out",
-          isExpanded ? "w-[121px] h-[95px]" : "w-[202px] h-[158px]"
-        )}>
-          <Image
-            src={image}
-            alt={title}
-            width={isExpanded ? 121 : 202}
-            height={isExpanded ? 95 : 158}
-            className="object-cover transition-all duration-500"
-          />
+        {/* Project Thumbnail Section */}
+        <div className="w-full h-[115px] flex items-start gap-3">
+          <div className="relative w-[121px] h-[95px] rounded-2xl overflow-hidden">
+            <Image
+              src={images[0]}
+              alt={title}
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
         </div>
-        
-        <div className={cn(
-          "flex flex-col transition-all duration-500 ease-in-out",
-          isExpanded ? "gap-4" : "gap-3"
-        )}>
+
+        {/* Main Content Section */}
+        <div className="w-full flex flex-col gap-3">
           {/* Title */}
           <h3 className="text-white text-[10pt] font-hack">{title}</h3>
           
-          {/* Project Type Container */}
-          <div className="bg-white/10 rounded-full px-3 py-1 border border-[#C0282D] w-fit">
-            <span className="text-white text-[6pt] font-hack">{projectType}</span>
+          {/* Project Type */}
+          <div className="bg-white rounded-full px-3 py-1 border-2 border-[#C0282D] w-fit">
+            <span className="text-black text-[6pt] font-hack">{projectType}</span>
           </div>
 
-          {!isExpanded && (
-            /* Project Skills Container */
-            <div className="bg-white/10 rounded-full px-3 py-1 border border-[#4361EE] w-fit">
-              <span className="text-white text-[6pt] font-hack">
-                {skills.join(' • ')}
-              </span>
+          {/* Photo Carousel */}
+          {isExpanded && (
+            <div className="w-full h-[198px] flex gap-3 overflow-x-auto">
+              {images.map((image, index) => (
+                <div 
+                  key={index}
+                  className="relative min-w-[198px] h-[198px] rounded-lg overflow-hidden shadow-[0_0_4px_0_rgba(0,0,0,0.25)]"
+                >
+                  <Image
+                    src={image}
+                    alt={`${title} - Image ${index + 1}`}
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                </div>
+              ))}
             </div>
           )}
-        </div>
 
-        {isExpanded && (
-          <>
-            {/* Embedded Behance Project */}
-            <div className={cn(
-              "w-full rounded-lg overflow-hidden transition-all duration-500 ease-in-out border-4 border-[#4361EE]",
-              isExpanded ? "opacity-100 h-[514px] mt-4" : "opacity-0 h-0"
-            )}>
-              <iframe 
-                src="https://www.behance.net/embed/project/YOUR_PROJECT_ID"
-                width="1046"
-                height="514"
-                className="w-full h-full"
-                style={{ border: 'none' }}
-              />
+          {/* Description */}
+          {isExpanded && (
+            <div className="w-full h-[116px] p-4 bg-white border-2 border-[#4361EE] rounded-lg">
+              <p className="text-black text-sm font-hack leading-relaxed">
+                {description}
+              </p>
             </div>
+          )}
 
-            {/* Close Button */}
-            <div className="w-full flex justify-center">
+          {/* Action Buttons */}
+          {isExpanded && (
+            <div className="w-full flex justify-center gap-[60px] mt-4">
               <button
                 onClick={(e) => {
                   e.stopPropagation();
                   onClick?.();
                 }}
-                className="w-full h-12 flex items-center justify-center bg-[#15102A]/20 hover:bg-[#15102A]/30 transition-all duration-300 border-2 border-[#C0282D] rounded-lg"
+                className="w-[422px] h-[45px] flex items-center justify-center bg-[#C0282D] hover:bg-[#C0282D]/90 transition-all duration-300 rounded-[48px] text-white font-hack text-sm border-2 border-[#4361EE]"
               >
-                <svg 
-                  width="24" 
-                  height="24" 
-                  viewBox="0 0 24 24" 
-                  fill="none" 
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path 
-                    d="M12 20L12 4M12 4L5 11M12 4L19 11" 
-                    stroke="white" 
-                    strokeWidth="2" 
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
+                Close
               </button>
+              {projectUrl && projectUrl.length > 1 && (
+                <Link
+                  href={projectUrl}
+                  className="w-[422px] h-[45px] flex items-center justify-center bg-[#4361EE] hover:bg-[#4361EE]/90 transition-all duration-300 rounded-[100px] text-white font-hack text-sm border-2 border-[#C0282D]"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  Go To Project
+                </Link>
+              )}
             </div>
-          </>
-        )}
+          )}
+        </div>
       </div>
     </div>
   );
-}; 
+};
+
+export default CarouselCard; 
