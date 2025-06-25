@@ -1,0 +1,12 @@
+:root {
+    --MAIN: rgb(66, 43, 113);
+    --SECONDARY: rgb(45, 169, 225);
+    --TERTIARY: rgb(192, 40, 45);
+    --BACK_GROUND: rgb(21, 16, 41);
+    --WHITE: rgb(255, 255, 255);
+    --BACKGROUND_ACTIVATED: rgba(133, 133, 133, 0.12);
+    --BLACK: rgb(0, 0, 0);
+    --color-light-purple: #a89cc8;
+    --lighter-purple: #3a2d56;
+    --Medium-Dark-Purple: rgb(66, 43, 113);
+}
